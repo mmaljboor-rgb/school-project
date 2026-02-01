@@ -3,249 +3,301 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>محراب التسامح | تجربة تعليمية رائدة</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;500;900&family=Amiri:ital,wght@1,700&family=Reem+Kufi:wght@600&display=swap" rel="stylesheet">
+    <title>محراب التسامح | مدرسة سالم الثانوية</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;600;900&family=Reem+Kufi:wght@500;800&display=swap" rel="stylesheet">
+    
     <style>
         :root {
-            --main-bg: #eff3f8;
-            --accent: #5d8aa8;
-            --gold: #c5a059;
-            --glass: rgba(255, 255, 255, 0.6);
+            --accent: #d4af37; /* ذهبي ملكي */
+            --accent-glow: rgba(212, 175, 55, 0.3);
+            --glass: rgba(255, 255, 255, 0.05);
+            --border: rgba(255, 255, 255, 0.12);
+            --bg-dark: #06090f;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
             font-family: 'Cairo', sans-serif;
-            background: var(--main-bg);
-            color: #2c3e50;
-            overflow-x: hidden;
+            background-color: var(--bg-dark);
+            color: #fff;
             min-height: 100vh;
+            overflow-x: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
-        /* خلفية سائلة متحركة */
-        .animated-bg {
+        /* خلفية سديمية متحركة */
+        .bg-canvas {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
             z-index: -1;
-            background: linear-gradient(45deg, #e3f2fd, #f1f8e9, #fce4ec, #e0f2f1);
-            background-size: 400% 400%;
-            animation: gradientBG 15s ease infinite;
-        }
-        @keyframes gradientBG {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
+            background: radial-gradient(circle at 20% 30%, #1a2a6c 0%, transparent 40%),
+                        radial-gradient(circle at 80% 70%, #b21f1f 0%, transparent 40%),
+                        radial-gradient(circle at 50% 50%, #111 0%, #000 100%);
+            opacity: 0.6;
         }
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 80px 20px;
-        }
-
-        /* تصميم العنوان الفخم */
-        .hero-title {
-            text-align: center;
-            margin-bottom: 80px;
-        }
-
-        .hero-title span {
-            font-family: 'Amiri', serif;
-            font-style: italic;
-            color: var(--gold);
-            font-size: 1.5rem;
-            display: block;
-            margin-bottom: 10px;
-        }
-
-        .hero-title h1 {
-            font-family: 'Reem Kufi', sans-serif;
-            font-size: 4.5rem;
-            letter-spacing: -1px;
-            background: linear-gradient(90deg, #1e3a5f, #5d8aa8);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            line-height: 1.2;
-        }
-
-        /* شبكة BentoGrid المتطورة */
-        .bento-grid {
-            display: grid;
-            grid-template-columns: repeat(12, 1fr);
-            grid-template-rows: auto auto;
-            gap: 25px;
-        }
-
-        .bento-item {
-            background: var(--glass);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(255,255,255,0.5);
-            border-radius: 40px;
-            padding: 40px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.02);
-            transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
-        }
-
-        .bento-item:hover {
-            transform: translateY(-10px) scale(1.01);
-            background: rgba(255, 255, 255, 0.9);
-            box-shadow: 0 30px 80px rgba(0,0,0,0.06);
-        }
-
-        /* مشغل الفيديو العملاق */
-        .video-large {
-            grid-column: span 8;
-            position: relative;
-            padding: 0;
-            overflow: hidden;
-            background: #000;
-        }
-
-        .video-large video {
-            width: 100%;
-            height: 100%;
-            display: block;
-            object-fit: cover;
-        }
-
-        /* النص الجانبي الأدبي */
-        .text-side {
-            grid-column: span 4;
+        /* واجهة الدخول */
+        #intro-overlay {
+            position: fixed;
+            inset: 0;
+            background: radial-gradient(circle, #1a1a1a, #000);
+            z-index: 9999;
             display: flex;
             flex-direction: column;
             justify-content: center;
-        }
-
-        .text-side h3 {
-            font-family: 'Reem Kufi', sans-serif;
-            font-size: 2rem;
-            color: #1e3a5f;
-            margin-bottom: 20px;
-        }
-
-        .text-side p {
-            font-size: 1.2rem;
-            line-height: 2.1;
-            color: #546e7a;
-            font-weight: 300;
-        }
-
-        /* البطاقات السفلية الحديثة */
-        .feature-box {
-            grid-column: span 4;
-            text-align: center;
-        }
-
-        .feature-box .icon-wrap {
-            width: 70px;
-            height: 70px;
-            background: white;
-            border-radius: 20px;
-            display: flex;
             align-items: center;
-            justify-content: center;
-            margin: 0 auto 20px;
-            font-size: 2rem;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+            transition: 1.2s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        .feature-box h4 {
+        .start-btn {
+            background: none;
+            border: 1px solid var(--accent);
+            color: var(--accent);
+            padding: 18px 50px;
             font-size: 1.4rem;
-            margin-bottom: 15px;
-            color: #1e3a5f;
+            font-family: 'Cairo';
+            cursor: pointer;
+            border-radius: 12px;
+            transition: 0.5s;
+            letter-spacing: 1px;
+            backdrop-filter: blur(5px);
         }
 
-        /* زر تفاعلي ناعم */
-        .btn-peace {
-            display: inline-block;
-            margin-top: 30px;
-            padding: 15px 40px;
-            background: #1e3a5f;
-            color: white;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 600;
-            box-shadow: 0 10px 20px rgba(30, 58, 95, 0.2);
+        .start-btn:hover {
+            background: var(--accent);
+            color: #000;
+            box-shadow: 0 0 40px var(--accent-glow);
         }
 
-        .btn-peace:hover {
-            background: var(--gold);
-            transform: scale(1.05);
+        /* الحاوية الرئيسية */
+        .master-wrapper {
+            max-width: 1200px;
+            width: 90%;
+            padding: 60px 0;
+            z-index: 10;
         }
 
+        .main-header {
+            text-align: center;
+            margin-bottom: 70px;
+        }
+
+        .main-header h1 {
+            font-family: 'Reem Kufi', sans-serif;
+            font-size: clamp(2.5rem, 8vw, 4.5rem);
+            background: linear-gradient(180deg, #fff 30%, var(--accent) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin: 15px 0;
+            filter: drop-shadow(0 5px 15px rgba(0,0,0,0.5));
+        }
+
+        /* شبكة بينتو المطورة */
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 25px;
+            grid-auto-flow: dense;
+        }
+
+        .glass-card {
+            background: var(--glass);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--border);
+            border-radius: 24px;
+            padding: 30px;
+            transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .glass-card:hover {
+            border-color: var(--accent);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4), inset 0 0 20px rgba(212, 175, 55, 0.05);
+        }
+
+        /* أحجام البطاقات */
+        .big-v { grid-column: span 3; grid-row: span 2; padding: 0; min-height: 400px; }
+        .tall { grid-column: span 1; grid-row: span 2; }
+        .wide { grid-column: span 2; }
+        .feature-box { text-align: center; }
+
+        .video-player { 
+            width: 100%; height: 100%; object-fit: cover; 
+            filter: brightness(0.8); transition: 0.5s;
+        }
+        .glass-card:hover .video-player { filter: brightness(1); }
+
+        .icon-circle {
+            width: 55px; height: 55px;
+            background: linear-gradient(135deg, var(--accent-glow), transparent);
+            border-radius: 15px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.5rem; margin-bottom: 20px;
+            border: 1px solid var(--border);
+        }
+
+        .card-title { font-size: 1.4rem; font-weight: 800; margin-bottom: 12px; color: var(--accent); }
+        .card-desc { font-size: 1rem; line-height: 1.7; opacity: 0.8; }
+
+        /* الآية القرآنية */
+        .quran-box {
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.08) 0%, transparent 100%);
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+        }
+        .quran-text {
+            font-family: 'Reem Kufi';
+            font-size: 2rem;
+            text-shadow: 0 0 20px var(--accent-glow);
+            margin-bottom: 5px;
+        }
+
+        /* مشغل الصوت */
+        .audio-card { background: rgba(255,255,255,0.03); }
+        audio { width: 100%; margin-top: 15px; height: 40px; filter: contrast(1.1) brightness(1.2) invert(1); }
+
+        /* الأزرار السفلية */
+        .footer-actions {
+            display: flex; gap: 20px; justify-content: center; margin-top: 60px; padding-bottom: 40px;
+        }
+        .btn-main {
+            padding: 16px 40px; border-radius: 12px; text-decoration: none;
+            font-weight: bold; transition: 0.4s; border: 1px solid var(--accent);
+            font-size: 1.1rem;
+        }
+        .btn-primary { background: var(--accent); color: #000; }
+        .btn-primary:hover { transform: translateY(-5px); box-shadow: 0 15px 30px var(--accent-glow); }
+
+        /* ريسبونسيف */
         @media (max-width: 1024px) {
-            .video-large, .text-side, .feature-box { grid-column: span 12; }
-            .hero-title h1 { font-size: 2.8rem; }
+            .grid-container { grid-template-columns: repeat(2, 1fr); }
+            .big-v, .tall, .wide { grid-column: span 2; }
+        }
+        @media (max-width: 600px) {
+            .grid-container { grid-template-columns: 1fr; }
+            .big-v, .tall, .wide { grid-column: span 1; }
+            .main-header h1 { font-size: 2.8rem; }
         }
     </style>
 </head>
 <body>
 
-    <div class="animated-bg"></div>
+    <div class="bg-canvas"></div>
 
-    <div class="container">
-        <header class="hero-title">
-            <span>رسالة سامية من قلب مدرستنا</span>
-            <h1>قيم واثار التسامح</h1>
-        </header>
-
-        <main class="bento-grid">
-            <section class="bento-item video-large">
-                <video controls poster="https://source.unsplash.com/random/1200x700?peace,soft">
-                    <source src="your-video.mp4" type="video/mp4">
-                </video>
-            </section>
-
-            <section class="bento-item text-side">
-                <h3>هندسة الأرواح</h3>
-                <p>
-                    التسامح ليس خياراً تربوياً، بل هو <strong>"البنية التحتية"</strong> لنمو الإنسان. بمدرستنا، نحوّل العفو إلى منهج، والاختلاف إلى ثراء بصرى وفكري. نحن لا نعلّمهم كيف يتجنبون الصدام، بل كيف يحتوون العالم بأسره بابتسامة وقبول.
-                </p>
-                <a href="#" class="btn-peace">انضم لمبادرتنا</a>
-            </section>
-
-            <div class="bento-item feature-box">
-                <div class="icon-wrap">🕊️</div>
-                <h4>تسامي الذات</h4>
-                <p>أن ترى في تعثر الآخر فرصة لتمتد يدك بالعون لا باللوم، لتبنيا جسراً من الثقة.</p>
-            </div>
-
-            <div class="bento-item feature-box" style="background: rgba(197, 160, 89, 0.1);">
-                <div class="icon-wrap">💎</div>
-                <h4>جوهر الاختلاف</h4>
-                <p>كل طالب هو لون في لوحة المدرسة؛ وبدون تمازج الألوان، لا تكتمل جمالية المشهد.</p>
-            </div>
-
-            <div class="bento-item feature-box">
-                <div class="icon-wrap">🌟</div>
-                <h4>إرث السلام</h4>
-                <p>نحن لا نخرّج طلاباً متفوقين فحسب، بل نرسل للعالم سفراء يحملون المحبة في قلوبهم.</p>
-            </div>
-        </main>
+    <div id="intro-overlay">
+        <div class="animate__animated animate__pulse animate__infinite icon-circle" style="width:120px; height:120px; font-size:3.5rem; margin-bottom: 30px;">🕊️</div>
+        <button class="start-btn" onclick="unlockExperience()">استكشاف محراب التسامح</button>
+        <p style="margin-top: 25px; opacity: 0.4; font-weight: 300;">يفضل ارتداء سماعات الأذن</p>
     </div>
 
-    <footer style="text-align: center; padding: 50px; color: #7f8c8d; font-weight: 300;">
-        <p>مدرسة سالم الثانوية للبنين | 2026 - جيل يتنفس التسامح</p>
-    </footer>
+    <div class="master-wrapper">
+        <header class="main-header">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/14/Coat_of_arms_of_Saudi_Arabia.svg/1200px-Coat_of_arms_of_Saudi_Arabia.svg.png" width="70" alt="Logo" style="filter: drop-shadow(0 0 10px var(--accent-glow));">
+            <p style="letter-spacing: 4px; font-weight: 300; margin-top: 15px; font-size: 0.9rem; opacity: 0.7;">SAALIM SECONDARY SCHOOL</p>
+            <h1 class="animate__animated animate__fadeIn">محراب التسامح</h1>
+            <div style="width: 50px; height: 2px; background: var(--accent); margin: 0 auto 20px;"></div>
+            <p style="color: #eee; font-size: 1.1rem; opacity: 0.8;">بناء القيم.. نهضة وطن</p>
+        </header>
+
+        <main class="grid-container">
+            <section class="glass-card big-v animate__animated animate__fadeIn">
+                <video id="mainVideo" class="video-player" loop muted playsinline>
+                    <source src="https://assets.mixkit.co/videos/preview/mixkit-abstract-flowing-gold-particles-30245-large.mp4" type="video/mp4">
+                </video>
+                <div style="position: absolute; bottom: 20px; right: 20px; background: rgba(0,0,0,0.5); padding: 5px 15px; border-radius: 20px; font-size: 0.8rem;">
+                    عرض تعريفي
+                </div>
+            </section>
+
+            <section class="glass-card tall">
+                <div class="icon-circle">📜</div>
+                <h2 class="card-title">رؤيتنا</h2>
+                <p class="card-desc">نؤمن أن التسامح ليس مجرد كلمة، بل هو ممارسة يومية في فناء مدرسة سالم، تهدف لصناعة جيل يواجه العالم بقلب نقي وفكر متفتح.</p>
+            </section>
+
+            <section class="glass-card wide quran-box">
+                <p class="quran-text">"وَلْيَعْفُوا وَلْيَصْفَحُوا"</p>
+                <p style="font-size: 0.9rem; opacity: 0.6;">- سورة النور -</p>
+            </section>
+
+            <section class="glass-card wide audio-card">
+                <h3 class="card-title" style="display:flex; align-items:center; gap:10px;">
+                    <span>🎵</span> نشيد كن بلسمًا
+                </h3>
+                <audio id="mainAudio" controls>
+                    <source src="c:\Users\user\Downloads\نشيد ( كن بلسما ) عادل المطرفي.mp3" type="audio/mpeg">
+                </audio>
+            </section>
+
+            <div class="glass-card feature-box">
+                <div class="icon-circle" style="margin: 0 auto 15px;">💎</div>
+                <h3 class="card-title" style="font-size: 1.1rem;">النقاء</h3>
+                <p class="card-desc" style="font-size: 0.85rem;">تجاوز أخطاء الماضي بروح إيجابية.</p>
+            </div>
+
+            <div class="glass-card feature-box">
+                <div class="icon-circle" style="margin: 0 auto 15px;">🤝</div>
+                <h3 class="card-title" style="font-size: 1.1rem;">الاحتواء</h3>
+                <p class="card-desc" style="font-size: 0.85rem;">فهم الآخر هو أول خطوات السلام.</p>
+            </div>
+
+            <div class="glass-card feature-box">
+                <div class="icon-circle" style="margin: 0 auto 15px;">🚀</div>
+                <h3 class="card-title" style="font-size: 1.1rem;">الارتقاء</h3>
+                <p class="card-desc" style="font-size: 0.85rem;">التسامح صفة الأقياء والمبدعين.</p>
+            </div>
+
+            <div class="glass-card feature-box">
+                <div class="icon-circle" style="margin: 0 auto 15px;">🌍</div>
+                <h3 class="card-title" style="font-size: 1.1rem;">السلام</h3>
+                <p class="card-desc" style="font-size: 0.85rem;">غرس المودة في قلوب المجتمع.</p>
+            </div>
+        </main>
+
+        <div class="footer-actions">
+            <a href="#" class="btn-main btn-primary">ميثاق التسامح</a>
+            <a href="#" class="btn-main" style="color: #fff; opacity: 0.7;">العودة للرئيسية</a>
+        </div>
+    </div>
 
     <script>
-        // إضافة حركة ناعمة جداً عند التمرير
-        const items = document.querySelectorAll('.bento-item');
-        const observer = new IntersectionObserver(entries => {
-            entries.forEach(entry => {
-                if(entry.isIntersecting) {
-                    entry.target.style.opacity = 1;
-                    entry.target.style.transform = "translateY(0)";
-                }
-            });
-        }, { threshold: 0.1 });
+        function unlockExperience() {
+            const overlay = document.getElementById('intro-overlay');
+            overlay.style.opacity = '0';
+            setTimeout(() => overlay.style.display = 'none', 1200);
+            
+            // تشغيل الوسائط
+            const audio = document.getElementById('mainAudio');
+            const video = document.getElementById('mainVideo');
+            
+            audio.play().catch(() => console.log("Audio interaction required"));
+            video.play().catch(() => console.log("Video interaction required"));
+        }
 
-        items.forEach(item => {
-            item.style.opacity = 0;
-            item.style.transform = "translateY(40px)";
-            item.style.transition = "all 0.8s ease-out";
-            observer.observe(item);
+        // تأثير الإمالة (Tilt) المحسن
+        document.querySelectorAll('.glass-card').forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                
+                const rotateX = (y - centerY) / 15;
+                const rotateY = (centerX - x) / 15;
+                
+                card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-10px)`;
+            });
+
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0)`;
+            });
         });
     </script>
 </body>
