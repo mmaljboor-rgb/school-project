@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>محراب التسامح | تجربة تعليمية رائدة</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;500;900&family=Amiri:ital,wght@1,700&family=Reem+Kufi:wght@600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --main-bg: #eff3f8;
+            --accent: #5d8aa8;
+            --gold: #c5a059;
+            --glass: rgba(255, 255, 255, 0.6);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Cairo', sans-serif;
+            background: var(--main-bg);
+            color: #2c3e50;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        /* خلفية سائلة متحركة */
+        .animated-bg {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            z-index: -1;
+            background: linear-gradient(45deg, #e3f2fd, #f1f8e9, #fce4ec, #e0f2f1);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+        }
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 80px 20px;
+        }
+
+        /* تصميم العنوان الفخم */
+        .hero-title {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+
+        .hero-title span {
+            font-family: 'Amiri', serif;
+            font-style: italic;
+            color: var(--gold);
+            font-size: 1.5rem;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .hero-title h1 {
+            font-family: 'Reem Kufi', sans-serif;
+            font-size: 4.5rem;
+            letter-spacing: -1px;
+            background: linear-gradient(90deg, #1e3a5f, #5d8aa8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            line-height: 1.2;
+        }
+
+        /* شبكة BentoGrid المتطورة */
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            grid-template-rows: auto auto;
+            gap: 25px;
+        }
+
+        .bento-item {
+            background: var(--glass);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255,255,255,0.5);
+            border-radius: 40px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.02);
+            transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        .bento-item:hover {
+            transform: translateY(-10px) scale(1.01);
+            background: rgba(255, 255, 255, 0.9);
+            box-shadow: 0 30px 80px rgba(0,0,0,0.06);
+        }
+
+        /* مشغل الفيديو العملاق */
+        .video-large {
+            grid-column: span 8;
+            position: relative;
+            padding: 0;
+            overflow: hidden;
+            background: #000;
+        }
+
+        .video-large video {
+            width: 100%;
+            height: 100%;
+            display: block;
+            object-fit: cover;
+        }
+
+        /* النص الجانبي الأدبي */
+        .text-side {
+            grid-column: span 4;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .text-side h3 {
+            font-family: 'Reem Kufi', sans-serif;
+            font-size: 2rem;
+            color: #1e3a5f;
+            margin-bottom: 20px;
+        }
+
+        .text-side p {
+            font-size: 1.2rem;
+            line-height: 2.1;
+            color: #546e7a;
+            font-weight: 300;
+        }
+
+        /* البطاقات السفلية الحديثة */
+        .feature-box {
+            grid-column: span 4;
+            text-align: center;
+        }
+
+        .feature-box .icon-wrap {
+            width: 70px;
+            height: 70px;
+            background: white;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 2rem;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+        }
+
+        .feature-box h4 {
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            color: #1e3a5f;
+        }
+
+        /* زر تفاعلي ناعم */
+        .btn-peace {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 15px 40px;
+            background: #1e3a5f;
+            color: white;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            box-shadow: 0 10px 20px rgba(30, 58, 95, 0.2);
+        }
+
+        .btn-peace:hover {
+            background: var(--gold);
+            transform: scale(1.05);
+        }
+
+        @media (max-width: 1024px) {
+            .video-large, .text-side, .feature-box { grid-column: span 12; }
+            .hero-title h1 { font-size: 2.8rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="animated-bg"></div>
+
+    <div class="container">
+        <header class="hero-title">
+            <span>رسالة سامية من قلب مدرستنا</span>
+            <h1>قيم واثار التسامح</h1>
+        </header>
+
+        <main class="bento-grid">
+            <section class="bento-item video-large">
+                <video controls poster="https://source.unsplash.com/random/1200x700?peace,soft">
+                    <source src="your-video.mp4" type="video/mp4">
+                </video>
+            </section>
+
+            <section class="bento-item text-side">
+                <h3>هندسة الأرواح</h3>
+                <p>
+                    التسامح ليس خياراً تربوياً، بل هو <strong>"البنية التحتية"</strong> لنمو الإنسان. بمدرستنا، نحوّل العفو إلى منهج، والاختلاف إلى ثراء بصرى وفكري. نحن لا نعلّمهم كيف يتجنبون الصدام، بل كيف يحتوون العالم بأسره بابتسامة وقبول.
+                </p>
+                <a href="#" class="btn-peace">انضم لمبادرتنا</a>
+            </section>
+
+            <div class="bento-item feature-box">
+                <div class="icon-wrap">🕊️</div>
+                <h4>تسامي الذات</h4>
+                <p>أن ترى في تعثر الآخر فرصة لتمتد يدك بالعون لا باللوم، لتبنيا جسراً من الثقة.</p>
+            </div>
+
+            <div class="bento-item feature-box" style="background: rgba(197, 160, 89, 0.1);">
+                <div class="icon-wrap">💎</div>
+                <h4>جوهر الاختلاف</h4>
+                <p>كل طالب هو لون في لوحة المدرسة؛ وبدون تمازج الألوان، لا تكتمل جمالية المشهد.</p>
+            </div>
+
+            <div class="bento-item feature-box">
+                <div class="icon-wrap">🌟</div>
+                <h4>إرث السلام</h4>
+                <p>نحن لا نخرّج طلاباً متفوقين فحسب، بل نرسل للعالم سفراء يحملون المحبة في قلوبهم.</p>
+            </div>
+        </main>
+    </div>
+
+    <footer style="text-align: center; padding: 50px; color: #7f8c8d; font-weight: 300;">
+        <p>مدرسة سالم الثانوية للبنين | 2026 - جيل يتنفس التسامح</p>
+    </footer>
+
+    <script>
+        // إضافة حركة ناعمة جداً عند التمرير
+        const items = document.querySelectorAll('.bento-item');
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if(entry.isIntersecting) {
+                    entry.target.style.opacity = 1;
+                    entry.target.style.transform = "translateY(0)";
+                }
+            });
+        }, { threshold: 0.1 });
+
+        items.forEach(item => {
+            item.style.opacity = 0;
+            item.style.transform = "translateY(40px)";
+            item.style.transition = "all 0.8s ease-out";
+            observer.observe(item);
+        });
+    </script>
+</body>
+</html>
